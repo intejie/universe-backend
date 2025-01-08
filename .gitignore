@@ -1,0 +1,12 @@
+# IDE
+/.vscode
+/.idea
+
+# modules
+/node_modules
+
+# build
+/dist
+
+# environments
+.env.development
