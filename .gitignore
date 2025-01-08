@@ -10,3 +10,6 @@
 
 # environments
 .env.development
+
+# etc
+.DS_Store
