@@ -1,14 +1,12 @@
-import express, { type Request, type Response} from 'express'
+import fastify from 'fastify'
 
-const app = express()
-const port = process.env.PORT || 8080
+const server = fastify()
+const PORT = parseInt(process.env.PORT!) || 8080
 
-app.use(express.json())
-
-app.get('/', (req: Request, res: Response) => {
-   res.send('Hello, TypeScript Express!')
-})
-
-app.listen(port, () => {
-   console.log(`[server]: Server running at http://localhost:${port}`)
+server.listen({ port: PORT }, (err, address) => {
+   if (err) {
+      console.error(err)
+      process.exit(1)
+   }
+   console.log(`Server listening at ${address}`)
 })
