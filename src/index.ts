@@ -1,12 +1,13 @@
-import fastify from 'fastify'
+import express, { type Application } from 'express'
+import { routes } from './routes'
 
-const server = fastify()
-const PORT = parseInt(process.env.PORT!) || 8080
+const app: Application = express()
+const port = process.env.PORT || 8000
 
-server.listen({ port: PORT }, (err, address) => {
-   if (err) {
-      console.error(err)
-      process.exit(1)
-   }
-   console.log(`Server listening at ${address}`)
+app.use(express.json())
+
+app.use('/api', routes)
+
+app.listen(port, () => {
+   console.log(`[server]: 🚀 Server is running at http://localhost:${port} 🚀`)
 })
